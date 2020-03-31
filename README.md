@@ -23,11 +23,11 @@ This is the JSON (below) Prisma Access will send. The Google function in the pyt
 Be Notified of Changes to IP Addresses
 To be notified of public IP address changes for remote networks and loopback IP address changes for service connections, remote network connections, and mobile users, you can to specify a URL at which you can be alerted of a change. Prisma Access uses an HTTP POST request to send the notification. This POST request includes the following notification data in JSON format:
 
-{"addrType": "public_ip", "addrChangeType": "add", "utc_timestamp": "2019-01-31 23:08:19.383894", "text": "Address List Change Notification"}
+    {"addrType": "public_ip", "addrChangeType": "add", "utc_timestamp": "2019-01-31 23:08:19.383894", "text": "Address List Change Notification"}
 
-{"addrType": "public_ip", "addrChangeType": "delete", "utc_timestamp": "2019-01-31 23:13:35.882151", "text": "Address List Change Notification"}
+    {"addrType": "public_ip", "addrChangeType": "delete", "utc_timestamp": "2019-01-31 23:13:35.882151", "text": "Address List Change Notification"}
 
-{"addrType": "loopback_ip", "addrChangeType": "update", "utc_timestamp": "2019-01-31 23:29:27.100329", "text": "2018-05-11 23:29:27.100329"}
+    {"addrType": "loopback_ip", "addrChangeType": "update", "utc_timestamp": "2019-01-31 23:29:27.100329", "text": "2018-05-11 23:29:27.100329"}
 
 
 # Python Code
@@ -45,7 +45,14 @@ This shows how to setup authentication securely. In this script it is using just
 
 
 # Setup Slack Bot 
-
 https://api.slack.com/authentication/basics
 Use this guide to setup a Slack App that you can call by the code using one of the authentication methods in the guide.
+
+
+# Test cURL String
+curl -H "Content-type: application/json" -X POST https://google-function -d '{"addrType": "1.2.3.4", "addrChangeType": "add", "utc_timestamp": "2019-01-31 23:08:19.383894", "text": "GP"}' -k
+
+
+# Google Cloud Function
+Go to https://console.cloud.google.com/ and setup a cloud function. Install the python code on this and the requirments file. Once this is deployed it will provide a URL you can use for testing. Once confirmed then it can be deployed to Prisma Access.
 
