@@ -9,7 +9,7 @@ def update_ip(request):
         c_type = request_json['addrChangeType']
         t_stp  = request_json['utc_timestamp']
    
-        #This method is insecure. Be sire to change this to Oauth in Production
+        #This method is insecure. Be sure to change this to Oauth in Production
         client = slack.WebClient(token="Bot User OAuth Access Token")
 
         response = client.chat_postMessage(
